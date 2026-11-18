@@ -1,0 +1,56 @@
+{
+  "reviewed": true,
+  "registered_date": "2000-04-04",
+  "documents": [
+    {
+      "date": "2000-04-02",
+      "domains": [
+        "unknown"
+      ],
+      "primary": null,
+      "metadata": "Demonstration: no real patient, doctor, or institution. Completeness: one text file.",
+      "notes": "All lines checked against the synthetic text source. No OCR needed. No medical claims.",
+      "title": "DEMO: fictional table",
+      "type": "laboratory_result",
+      "subtype": "demo_only",
+      "basis": "An explicitly fictional table for a demo metric.",
+      "files": [
+        {
+          "name": "demo-lab.txt",
+          "sha256": "3348b30408bf319212b425459f289b920ce69e53057a92ad4549e8c6f66a6927"
+        }
+      ],
+      "registry_extra": {
+        "document_date": "2000-04-03",
+        "demo_only": true
+      },
+      "body": "## Full content — page 1\n\n| Name | Result | Unit | Reference range | Flag | Source |\n|---|---|---|---|---|---|\n| DEMO metric | 4.20 | demo unit | 3–6 (fictional) | none | page 1 |\n\n```text\nDEMO ONLY — entirely fictional document, not a medical result.\nSubject: DEMO, no real person.\nFictional event date: 2000-04-02. Document date: 2000-04-03.\nPage 1 of 1.\nName | Result | Unit | Reference range | Flag\nDEMO metric | 4.20 | demo unit | 3–6 (fictional) | none\nAll fields were invented solely to demonstrate file processing.\n```"
+    },
+    {
+      "date": "2000-04-02",
+      "domains": [
+        "unknown"
+      ],
+      "primary": null,
+      "metadata": "Demonstration: no real patient, doctor, or institution. Completeness: one text file.",
+      "notes": "All lines checked against the synthetic text source. No OCR needed. No medical claims.",
+      "title": "DEMO: fictional packaging",
+      "type": "product_information",
+      "subtype": "demo_only",
+      "basis": "Synthetic description of a demo product, not a medical source.",
+      "event_date": null,
+      "files": [
+        {
+          "name": "demo-product.txt",
+          "sha256": "1d232112a67d5a3c62421b7e0b9b1887d0bf047658accc09f8973bbbbe51c7b8"
+        }
+      ],
+      "registry_extra": {
+        "document_date": null,
+        "catalog_date_basis": "Fictional report date, not a manufacturing or photo date.",
+        "demo_only": true
+      },
+      "body": "## Full content\n\n```text\nDEMO ONLY — fictional DEMO-product packaging.\nThis is not a medication or a recommendation to take any product.\nFictional date of the report about the displayed product: 2000-04-02.\nForm used to test quantity tracking: demo unit.\nNo medical composition or therapeutic indication is provided.\n```"
+    }
+  ]
+}

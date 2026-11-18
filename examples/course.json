@@ -1,0 +1,20 @@
+{
+  "id": "COURSE-demo-only",
+  "product": {
+    "name": "DEMO-product — fictional",
+    "material_id": "MAT-1d232112a67d",
+    "material_card": "materials/2000-04-02/MAT-1d232112a67d.md"
+  },
+  "initial_reported_status": "active",
+  "regimen": {
+    "origin": "user_report",
+    "units_per_day": 1,
+    "unit": "demo unit",
+    "time_of_day": null,
+    "relation_to_meals": null
+  },
+  "planned_duration_days": 8,
+  "planned_total_units": 8,
+  "events_file": "records/medications/COURSE-demo-only-events.jsonl",
+  "demo_only": true
+}

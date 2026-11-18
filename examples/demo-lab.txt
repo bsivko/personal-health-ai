@@ -1,0 +1,7 @@
+DEMO ONLY — entirely fictional document, not a medical result.
+Subject: DEMO, no real person.
+Fictional event date: 2000-04-02. Document date: 2000-04-03.
+Page 1 of 1.
+Name | Result | Unit | Reference range | Flag
+DEMO metric | 4.20 | demo unit | 3–6 (fictional) | none
+All fields were invented solely to demonstrate file processing.

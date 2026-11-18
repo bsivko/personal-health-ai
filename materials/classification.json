@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "material_types": {
+    "laboratory_result": "Laboratory results",
+    "clinical_consultation": "Clinical consultation report",
+    "medical_record": "Medical record",
+    "product_information": "Medication or supplement information",
+    "instrumental_test": "Instrumental test",
+    "health_data_export": "Health data export",
+    "unknown": "Unspecified type",
+    "reference_information": "Reference information"
+  },
+  "domains": {
+    "cardiology": "Cardiology",
+    "endocrinology": "Endocrinology",
+    "immunology": "Immunology",
+    "hematology": "Hematology",
+    "rheumatology": "Rheumatology",
+    "nephrology": "Nephrology",
+    "physical_activity": "Physical activity",
+    "sleep": "Sleep",
+    "anthropometry": "Anthropometry",
+    "unknown": "Unspecified domain",
+    "gastroenterology": "Gastroenterology",
+    "otorhinolaryngology": "Otorhinolaryngology",
+    "neurology": "Neurology",
+    "phlebology": "Phlebology",
+    "traumatology": "Traumatology",
+    "urology": "Urology",
+    "ophthalmology": "Ophthalmology",
+    "pulmonology": "Pulmonology",
+    "dermatology": "Dermatology",
+    "dentistry": "Dentistry"
+  },
+  "classification_fields": {
+    "material_type": "single code from material_types",
+    "subtype": "content-based subtype code",
+    "domains": "list of codes from domains",
+    "primary_domain": "one listed domain or null",
+    "basis": "content evidence, not diagnosis inference",
+    "status": "reviewed or needs_review",
+    "reviewed_date": "YYYY-MM-DD"
+  }
+}
