@@ -128,7 +128,7 @@ def load():
 def state(course, events, as_of):
     cutoff = date.fromisoformat(as_of)
     status, dose, checkpoint = 'unknown', course['regimen']['units_per_day'], None
-    changed = False
+    projection_blocked = False
     regimen_changed_on = None
     for event in timeline(events, cutoff):
         if status == 'unknown':
@@ -136,13 +136,16 @@ def state(course, events, as_of):
         if event['type'] == 'checkpoint':
             checkpoint = event
         elif event['type'] == 'status_change':
-            status = event['status']
-            changed = True
+            next_status = event['status']
+            confirms_start = status == 'planned' and next_status == 'active'
+            if next_status not in {'planned', 'active'} or (next_status != status and not confirms_start):
+                projection_blocked = True
+            status = next_status
         else:
             if event['type'] == 'regimen_change':
                 dose = event['units_per_day']
                 regimen_changed_on = event['effective_date']
-            changed = True
+            projection_blocked = True
     out = dict(course_id=course['id'], as_of=cutoff.isoformat(), status=status, units_per_day=dose,
                regimen_changed_on=regimen_changed_on,
                checkpoint=checkpoint, reported_total_units=None, remaining_units_at_checkpoint=None,
@@ -154,7 +157,8 @@ def state(course, events, as_of):
                    remaining_units_at_checkpoint=max(0, target - count) if target is not None else None)
         # A calendar projection is never an intake event or a completion status.
         last_intake_date = checkpoint.get('last_intake_date')
-        if last_intake_date and status == 'active' and not changed and dose == 1 and target is not None and 0 < count <= target:
+        if (last_intake_date and status == 'active' and not projection_blocked
+                and dose == 1 and target is not None and 0 < count <= target):
             last = date.fromisoformat(last_intake_date)
             out['projection'] = dict(start_date=(last - timedelta(days=count - 1)).isoformat(),
                                      last_day=(last + timedelta(days=target - count)).isoformat(),

@@ -36,7 +36,7 @@ After regimen_change, the summary shows the date and dose from that report. Init
 
 Store a cumulative intake report as one checkpoint. If last intake date is unknown, show count and its effective reporting date. Conditional start/end projection requires a known last intake date.
 
-The initial projection mechanism supports only one unit/day and no pause, missed-intake, or regimen-change messages. Hide automatic projection when such events occur. Deviations require reconfirming the target, not automatically extending or shortening the course.
+The initial projection mechanism supports only one unit per day and an active course with no interruptions, missed intake, or regimen changes. Confirming the initial start of a planned course preserves eligibility once a qualifying checkpoint is recorded. Hide the projection after a pause even if the course resumes. Deviations require reconfirming the target.
 
 ## Commands
 - `python scripts/medications.py verify` — validate definitions, sources, and logs.

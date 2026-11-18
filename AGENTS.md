@@ -6,6 +6,7 @@
 ## Language
 - Use English for agent responses, instructions, generated documentation, material cards, indexes, reports, code comments, and examples unless the user explicitly requests another language.
 - Preserve original source files, exact quotations, names, numeric strings, and units as received. An English translation is a separate, identified representation; never translate or alter the archived original in place.
+- Keep Git line-ending conversion disabled for files in `incoming/`, `raw/`, and `materials/` ([D-001](documentation/DECISIONS.md#1)).
 
 ## Structure
 - [documentation](documentation/AGENTS.md) — architecture, requirements, current state, decisions, and operation specifications.

@@ -7,3 +7,8 @@
 *.zip binary
 *.xlsx binary
 *.sqlite binary
+
+# Preserve original and registered material bytes across Git checkouts.
+/incoming/** -text !eol
+/raw/** -text !eol
+/materials/** -text !eol

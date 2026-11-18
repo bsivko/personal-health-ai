@@ -59,6 +59,23 @@ def check_medications(folder):
     for day in ('2000-04-04', '2000-04-05', '2001-04-04'):
         state = medications.state(planned, [plan_event], day)
         assert state['status'] == 'planned' and state['reported_total_units'] is None
+    confirmed_start = dict(plan_event, id='EVENT-start', status='active',
+                           effective_date='2000-04-05', recorded_date='2000-04-05')
+    checkpoint = dict(events[0], effective_date='2000-04-07', recorded_date='2000-04-07',
+                      last_intake_date='2000-04-07')
+    started = [plan_event, confirmed_start, checkpoint]
+    medications.check_events(planned, started)
+    assert medications.state(planned, started, '2000-04-05')['projection'] is None
+    state = medications.state(planned, started, '2000-04-07')
+    assert state['status'] == 'active' and state['reported_total_units'] == 3
+    assert state['projection']['start_date'] == '2000-04-05'
+    assert state['projection']['last_day'] == '2000-04-12'
+    assert state['projection']['confirmed'] is False
+    paused = dict(confirmed_start, id='EVENT-pause', status='paused',
+                  effective_date='2000-04-08', recorded_date='2000-04-08')
+    resumed = dict(confirmed_start, id='EVENT-resume',
+                   effective_date='2000-04-09', recorded_date='2000-04-09')
+    assert medications.state(planned, started + [paused, resumed], '2000-04-09')['projection'] is None
     missed = dict(plan_event, id='EVENT-demo-miss', type='missed', scheduled_units=1)
     assert medications.state(course, events + [missed], '2000-04-05')['projection'] is None
     stopped = dict(plan_event, id='EVENT-stop', status='stopped',

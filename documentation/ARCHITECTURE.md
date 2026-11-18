@@ -36,6 +36,8 @@ These are logical boundaries; a task may directly access a readable material or 
 ## Intake and original storage
 The inbox is incoming/ at the project root. An original stays there until intake results have passed verification. It then moves to raw/YYYY-MM-DD/ without byte changes or overwriting existing files; SHA-256 and links are checked. On failure, intake is not complete. [Intake contract](specs/add-material.md).
 
+Git line-ending conversion is disabled in incoming/, raw/, and materials/ to preserve originals and registered derived files in private repositories. The fictional fixtures in examples/ retain LF endings for stable checksums. [D-001](DECISIONS.md#1).
+
 Medical event, document, receipt, and directory dates are distinct. For a lab result, the directory follows the sample collection date. Do not infer an unknown event date from printing or receipt. A separate user instruction about the directory date is recorded with its rationale and does not replace the event date.
 
 A multiyear archive is a snapshot: its export date determines the directory and event coverage is stored separately. Ask if an explicit export date is unavailable. Undated personal reference information uses mirrored raw/undated/ and materials/undated/ directories; unknown dates remain null and the collection does not create a medical event.
@@ -83,7 +85,7 @@ Counts do not increase with elapsed time and are not expanded into invented dail
 
 Build state by effective event date, then message date, then append order when dates tie. A late report does not replace a later event. Visible checkpoint corrections replace the corrected entry in calculations while retaining it in the log. An as-of view considers both event and message registration dates.
 
-Keep cumulative counts even when the last intake date is unknown. Calendar projection requires a known date. Output course states and REPORT messages separately.
+Keep cumulative counts even when the last intake date is unknown. Calendar projection requires a known date. Confirmation of the initial start preserves eligibility for a projection under the existing regimen. Output course states and REPORT messages separately.
 
 ## Medical overview and results
 overview/ holds a compact medical overview and timeline with evidence. Explicitly separate hypotheses, conclusions, and recommendations from records facts and source statements.
